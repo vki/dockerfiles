@@ -1,6 +1,6 @@
 FROM snowdream/gradle:3.4
 
-MAINTAINER snowdream <yanghui1986527@gmail.com>
+MAINTAINER howard000 <howard000@gmail.com>
 
 # Install dependencies
 RUN dpkg --add-architecture i386 && \
