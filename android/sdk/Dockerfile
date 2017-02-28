@@ -15,7 +15,6 @@ RUN curl -sSL "${ANDROID_SDK_URL}" \
   && unzip -o tools_${ANDROID_SDK_VERSION}-linux.zip  -d ${SDK_HOME}  \
   && rm -rf tools_${ANDROID_SDK_VERSION}-linux.zip
 
-
 ENV ANDROID_HOME ${SDK_HOME}/android-sdk-linux
 ENV ANDROID_SDK ${SDK_HOME}/android-sdk-linux
 ENV PATH ${ANDROID_HOME}/tools:$ANDROID_HOME/platform-tools:$PATH
