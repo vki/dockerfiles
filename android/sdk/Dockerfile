@@ -11,7 +11,7 @@ RUN dpkg --add-architecture i386 && \
 # Download and untar Android SDK
 ENV ANDROID_SDK_VERSION r25.2.5
 ENV ANDROID_SDK_URL https://dl.google.com/android/repository/tools_${ANDROID_SDK_VERSION}-linux.zip
-RUN curl -sSL "${ANDROID_SDK_URL} -o tools_${ANDROID_SDK_VERSION}-linux.zip" \
+RUN curl -sSL "${ANDROID_SDK_URL}" -o tools_${ANDROID_SDK_VERSION}-linux.zip \
   && unzip -o tools_${ANDROID_SDK_VERSION}-linux.zip  -d ${SDK_HOME}  \
   && rm -rf tools_${ANDROID_SDK_VERSION}-linux.zip
 
