@@ -9,11 +9,11 @@ RUN dpkg --add-architecture i386 && \
     rm -rf /var/lib/apt/lists/*
 
 # Download and untar Android SDK
-ENV ANDROID_SDK_VERSION r25.2.5
-ENV ANDROID_SDK_URL https://dl.google.com/android/repository/tools_${ANDROID_SDK_VERSION}-linux.zip
-RUN curl -sSL "${ANDROID_SDK_URL}" -o tools_${ANDROID_SDK_VERSION}-linux.zip \
-  && unzip -o tools_${ANDROID_SDK_VERSION}-linux.zip  -d ${SDK_HOME}  \
-  && rm -rf tools_${ANDROID_SDK_VERSION}-linux.zip
+ENV ANDROID_SDK_VERSION r24.4.1
+ENV ANDROID_SDK_URL http://dl.google.com/android/android-sdk_${ANDROID_SDK_VERSION}-linux.tgz
+RUN curl -sSL "${ANDROID_SDK_URL}" -o android-sdk_${ANDROID_SDK_VERSION}-linux.tgz \
+  && tar --no-same-owner -xz -f android-sdk_${ANDROID_SDK_VERSION}-linux.tgz -C ${SDK_HOME}  \
+  && rm -rf android-sdk_${ANDROID_SDK_VERSION}-linux.tgz
 
 ENV ANDROID_HOME ${SDK_HOME}/android-sdk-linux
 ENV ANDROID_SDK ${SDK_HOME}/android-sdk-linux
@@ -21,7 +21,7 @@ ENV PATH ${ANDROID_HOME}/tools:$ANDROID_HOME/platform-tools:$PATH
 
 # Install Android SDK components
 
-ENV ANDROID_COMPONENTS platform-tools,build-tools-25.0.0,build-tools-25.0.1,build-tools-25.0.2,android-25
+ENV ANDROID_COMPONENTS platform-tools,build-tools-25.2.3,android-25
 ENV GOOGLE_COMPONENTS extra-android-m2repository,extra-google-m2repository
 
 RUN echo y | android update sdk --no-ui --all --filter "${ANDROID_COMPONENTS}" ; \
